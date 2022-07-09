@@ -20,7 +20,8 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run server\" \"npm run startReact\"",
+    "startReact": "react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run start\"",
     "server": "json-server -w server/db.json -p 3002",
     "build": "react-scripts build",
