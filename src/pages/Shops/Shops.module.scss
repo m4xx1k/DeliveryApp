@@ -1,0 +1,26 @@
+.shops{
+  display: flex;
+  justify-content: space-between;
+  &__list{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &_item{
+    margin: 20px;
+    font-size: 36px;
+    font-weight: 900;
+    cursor: pointer;
+    &_active{
+      color:#5EDC98;
+      border-bottom: 4px dotted #5EDC98;
+    }
+  }
+  &__goods{
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+}

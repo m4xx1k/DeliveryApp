@@ -1,0 +1,53 @@
+.cartgood{
+  margin: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+  width: 35%;
+  border: 2px solid #5EDC98;
+  border-radius:4px;
+  box-shadow: 3px 3px 3px #c0c0c0;
+  .info{
+    padding: 10px 0;
+
+    .name{
+      color: #5EDC98;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .price{
+      margin: 10px;
+    }
+
+    .count{
+      font-size: 18px;
+
+      &__change{
+        display: flex;
+        font-size: 24px;
+        cursor: pointer;
+
+        &_item{
+          width: 12px;
+          height: 12px;
+          border-top: 3px solid #000;
+          border-left: 3px solid #000;
+          transform: rotate(45deg);
+          margin: 8px;
+
+          &:nth-child(even){
+            transform: rotate(223deg);
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+
+  }
+  .delete{
+    font-size: 32px;
+    margin: 10px;
+    cursor: pointer;
+  }
+}

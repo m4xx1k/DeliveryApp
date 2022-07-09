@@ -1,0 +1,156 @@
+{
+  "shops": [
+    {
+      "id": 1,
+      "name": "MacDac"
+    },
+    {
+      "id": 2,
+      "name": "Kepub"
+    },
+    {
+      "id": 3,
+      "name": "Sha-Wu-Ha"
+    },
+    {
+      "id": 4,
+      "name": "Sushi"
+    },
+    {
+      "id": 5,
+      "name": "PizeriaRia"
+    }
+  ],
+  "goods": [
+    {
+      "id": 1,
+      "name": "Burger XL",
+      "price": 25,
+      "shopName": "MacDac"
+    },
+    {
+      "id": 2,
+      "name": "Burger L",
+      "price": 20,
+      "shopName": "MacDac"
+    },
+    {
+      "id": 3,
+      "name": "Burger M",
+      "price": 15,
+      "shopName": "MacDac"
+    },
+    {
+      "id": 4,
+      "name": "Burger S",
+      "price": 12,
+      "shopName": "MacDac"
+    },
+    {
+      "id": 5,
+      "name": "Burger XS",
+      "price": 10,
+      "shopName": "MacDac"
+    },
+    {
+      "id": 11,
+      "name": "Kebub XL",
+      "price": 25,
+      "shopName": "Kepub"
+    },
+    {
+      "id": 21,
+      "name": "Kebub L",
+      "price": 20,
+      "shopName": "Kepub"
+    },
+    {
+      "id": 13,
+      "name": "Kebub M",
+      "price": 15,
+      "shopName": "Kepub"
+    },
+    {
+      "id": 15,
+      "name": "Lawash XL",
+      "price": 25,
+      "shopName": "Sha-Wu-Ha"
+    },
+    {
+      "id": 26,
+      "name": "Lawash L",
+      "price": 20,
+      "shopName": "Sha-Wu-Ha"
+    },
+    {
+      "id": 37,
+      "name": "Lawash M",
+      "price": 15,
+      "shopName": "Sha-Wu-Ha"
+    },
+    {
+      "id": 18,
+      "name": "Sushi Set XL",
+      "price": 50,
+      "shopName": "Sushi"
+    },
+    {
+      "id": 29,
+      "name": "Sushi Set L",
+      "price": 40,
+      "shopName": "Sushi"
+    },
+    {
+      "id": 343,
+      "name": "Sushi Set M",
+      "price": 30,
+      "shopName": "Sushi"
+    },
+    {
+      "id": 441,
+      "name": "Pizza XL",
+      "price": 50,
+      "shopName": "PizeriaRia"
+    },
+    {
+      "id": 244,
+      "name": "Pizza L",
+      "price": 40,
+      "shopName": "PizeriaRia"
+    },
+    {
+      "id": 344,
+      "name": "Pizza M",
+      "price": 30,
+      "shopName": "PizeriaRia"
+    }
+  ],
+  "orders": [
+    {
+      "user": {
+        "name": "test",
+        "phone": "123456789012",
+        "email": "test@test.com",
+        "adress": "testtesttesttest"
+      },
+      "goods": [
+        {
+          "id": 11,
+          "name": "Kebub XL",
+          "price": 25,
+          "shopName": "Kepub",
+          "count": 1
+        },
+        {
+          "id": 21,
+          "name": "Kebub L",
+          "price": 20,
+          "shopName": "Kepub",
+          "count": 1
+        }
+      ],
+      "totalSum": 45,
+      "id": 443420
+    }
+  ]
+}

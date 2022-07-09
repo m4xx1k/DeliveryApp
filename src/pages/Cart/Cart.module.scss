@@ -1,0 +1,64 @@
+.status{
+  font-size: 36px;
+  font-weight: 700;
+  display: flex;
+  justify-self: center;
+}
+
+.cart{
+  display: flex;
+  justify-content: space-between;
+  .form{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    label{
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    input{
+      padding: 2px 10px;
+      border: 2px solid #5EDC98;
+      border-radius: 4px;
+      width: 400px;
+      height: 40px;
+      font-size: 18px;
+    }
+    .error{
+      color: #ff0000;
+      font-size: 14px;
+    }
+    button{
+      margin: 20px;
+      width: 160px;
+      height: 40px;
+      background: #fff;
+      color:#5EDC98;
+      font-size: 20px;
+      font-weight: 700;
+      border:3px solid #5EDC98;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover{
+        background: #5EDC98;
+        color:#fff;
+      }
+    }
+  }
+  .cart__list{
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .sum{
+    font-size: 36px;
+    align-self: center;
+    span{
+      color: #5EDC98;
+      font-weight: 700  ;
+    }
+  }
+}
