@@ -9,13 +9,12 @@ const Shops = () => {
 
     const {data: list_shops, isLoading: shopsIsLoading} = useGetShopsQuery();
     const {data: list_goods, isLoading: goodsIsLoading} = useGetGoodsQuery(shop)
-    console.log(list_shops)
 
 
     return (
         <div className={styles.shops}>
             {
-                !shopsIsLoading
+                !shopsIsLoading && !!list_shops
                     ?
                     <section className={styles.shops__list}>
                         {
@@ -34,7 +33,7 @@ const Shops = () => {
 
             <section className={styles.shops__goods}>
                 {
-                    !goodsIsLoading
+                    !goodsIsLoading && !!list_goods
                         ?
                         list_goods.map((data) =>
                             <Good key={data.id} info={data}/>

@@ -32,17 +32,14 @@ const History = () => {
 
         e.preventDefault()
 
+
         const correctPhone = phone.split("").length === 12 && !isNaN(Number(phone))
 
         if (correctPhone){
             await setOrders(ordersByPhone)
             setSearchBy("phone")
             setPhoneError("")
-            console.log(phone)
-            console.log(orders)
-            console.log(isSuccessOrdersByPhone)
-            console.log(isLoadingOrdersByPhone)
-            console.log(searchBy)
+
         }
         else
         {
