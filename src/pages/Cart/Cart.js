@@ -43,11 +43,15 @@ const Cart = () => {
             if (check) {
 
                 const orderInfo = {
-                    user: values,
+                    phone: values.phone,
+                    email: values.email,
+                    adress: values.adress,
+                    name: values.name,
                     goods: cart,
                     totalSum: totalSum,
                     id: Math.floor(Math.random() * 1000000)
                 }
+                console.log(orderInfo)
                 setOrderId(orderInfo.id)
                 await addOrder(orderInfo)
 

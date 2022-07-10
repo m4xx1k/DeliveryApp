@@ -103,9 +103,9 @@ const History = () => {
                                         <div className={styles.orderId}> Order Id: <span>{orderItem.id}</span></div>
                                         <div className={styles.title}>User Info:</div>
                                         <div className={styles.userInfo}>
-                                            <div>{orderItem.user.name}</div>
-                                            <div>{orderItem.user.email}</div>
-                                            <div>{orderItem.user.phone}</div>
+                                            <div>{orderItem.name}</div>
+                                            <div>{orderItem.email}</div>
+                                            <div>{orderItem.phone}</div>
                                         </div>
 
                                         <div className={styles.title}>Orders:</div>
@@ -137,15 +137,15 @@ const History = () => {
                                     <div className={styles.orderId}> Order Id: <span>{order.id}</span></div>
                                     <div className={styles.title}>User Info:</div>
                                     <div className={styles.userInfo}>
-                                        <div>{order.user.name}</div>
-                                        <div>{order.user.email}</div>
-                                        <div>{order.user.phone}</div>
+                                        <div>{order.name}</div>
+                                        <div>{order.email}</div>
+                                        <div>{order.phone}</div>
                                     </div>
 
                                     <div className={styles.title}>Orders:</div>
                                     <div className={styles.goods}>
                                         {
-                                            order.goods.map((good) =>
+                                            !!order.goods && order.goods.map((good) =>
                                                 <div key={good.id} className={styles.good}>
                                                     <img src="https://via.placeholder.com/300" alt="img"/>
                                                     <div>{good.name}</div>

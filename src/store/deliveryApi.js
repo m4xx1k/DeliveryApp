@@ -2,7 +2,7 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 
 export const deliveryApi = createApi({
     reducerPath: "deliveryApi",
-    baseQuery: fetchBaseQuery({baseUrl: "http://localhost:3002/"}),
+    baseQuery: fetchBaseQuery({baseUrl: "http://localhost:5000/"}),
 
     endpoints: (build) => ({
         addOrder: build.mutation({
@@ -16,13 +16,13 @@ export const deliveryApi = createApi({
             query: ()=> "shops"
         }),
         getGoods: build.query({
-            query: (shopName) => `goods?q=${shopName}`
+            query: (shopName) => `goods/?shop=${shopName}`
         }),
         getOrderById: build.query({
-            query:(id)=>`orders/${id}`
+            query:(id)=>`ordersById/?id=${id}`
         }),
         getOrdersByContacts: build.query({
-            query: (text) => `orders?q=${text}`
+            query: (text) => `ordersByPhone/?phone=${text}`
         })
     })
 
