@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from "./Good.module.scss"
-import {useDispatch} from "react-redux";
-import {addGood} from "../../store/CartSlice";
 
 const Good = ({info}) => {
-    const dispatch = useDispatch();
     const addGoodSubmit = () => {
-        dispatch(addGood(info))
+        const goodInfo = {...info, count: 1}
+        localStorage.setItem(info.id.toString(), JSON.stringify(goodInfo))
+
     }
     return (
         <div className={styles.good}>

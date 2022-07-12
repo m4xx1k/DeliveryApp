@@ -4,14 +4,13 @@ import styles from './Cart.module.scss'
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 
-import {useSelector} from "react-redux";
-import MiniGood from "../../components/CartGood/MiniGood";
+import MiniGood from "../../components/MiniGood/MiniGood";
 import {useAddOrderMutation} from "../../store/deliveryApi";
 
 import Swal from 'sweetalert2'
 
 const Cart = () => {
-    const cart = useSelector(state => state.cart.cart)//get cart from redux
+    const [cart, setCart] = useState(Object.keys(localStorage))//get good's id from localstorage
 
     const validation = Yup.object().shape({
         name: Yup.string()
@@ -26,32 +25,60 @@ const Cart = () => {
         phone: Yup.string().min(12, "Invalid phone").max(12, "Invalid phone").required('Required')
     });
 
-    const totalSum = cart.reduce((pr, cur) => pr + cur.price * cur.count, 0)
+    const [totalSum, setTotalSum] = useState(cart.reduce((pr, cur) => pr + JSON.parse(localStorage.getItem(cur)).price * JSON.parse(localStorage.getItem(cur)).count, 0))
 
     const [addOrder, {isError, isLoading, isSuccess}] = useAddOrderMutation();
     const [orderId, setOrderId] = useState(null)
+
+    const removeGoodButton = (id) => {
+        localStorage.removeItem(id)
+        setCart(Object.keys(localStorage))
+        setTotalSum(cart.reduce((pr, cur) => {
+            try{
+                return pr + JSON.parse(localStorage.getItem(cur)).price * JSON.parse(localStorage.getItem(cur)).count
+            }catch{
+                return pr
+            }
+
+        }, 0))
+    }
+
+    const changeCountButton = (id, count,num) => {
+        if(count === 1 && num === -1) {} //pass
+        else{
+            const goodInfo = JSON.parse(localStorage.getItem(id))
+            const newCount = goodInfo.count + num;
+            localStorage.setItem(id, JSON.stringify({...goodInfo, count: newCount}))
+            setTotalSum(cart.reduce((pr, cur) => pr + JSON.parse(localStorage.getItem(cur)).price * JSON.parse(localStorage.getItem(cur)).count, 0))
+        }
+    }
 
     const FormSubmit = async (values) => {
         if (cart.length) {
             //check if in cart are items from different shops
             let check = true
-            let pr = cart[0].shopName
+            let pr = JSON.parse(localStorage.getItem(cart[0])).shopName
+
             cart.forEach((elem) => {
-                if (elem.shopName !== pr) check = false
-                pr = elem.shopName
+                if (JSON.parse(localStorage.getItem(elem)).shopName !== pr) check = false
+                pr = JSON.parse(localStorage.getItem(elem)).shopName
             })
+
             if (check) {
+
+                const cartItems = cart.map(id=>{
+                    return JSON.parse(localStorage.getItem(id))
+                })
 
                 const orderInfo = {
                     phone: values.phone,
                     email: values.email,
                     adress: values.adress,
                     name: values.name,
-                    goods: cart,
+                    goods: cartItems,
                     totalSum: totalSum,
                     id: Math.floor(Math.random() * 1000000)
                 }
-                console.log(orderInfo)
                 setOrderId(orderInfo.id)
                 await addOrder(orderInfo)
 
@@ -127,8 +154,9 @@ const Cart = () => {
 
                 <div className={styles.cart__list}>
                     {
-                        cart.map((info) =>
-                            <MiniGood info={info} key={info.id}/>
+                        cart.map((id) =>
+                            <MiniGood id={id} key={id} remove={removeGoodButton} changeCount={changeCountButton}/>
+
                         )
                     }
                     <div className={styles.sum}>Total sum: <span>{totalSum}$</span></div>
